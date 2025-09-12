@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do List</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+</head>
+<body>
+  <h2>To-Do List</h2>
+  
+<input type="text" placeholder="Enter task" data-bind="value: newTask, valueUpdate: 'input'">
+  <button data-bind="click: addTask">Add Task</button>
+  
+  <ul data-bind="foreach: tasks">
+    <li>
+      <span data-bind="text: name"></span>
+      <button data-bind="click: remove">Remove</button>
+    </li>
+  </ul>
+
+  <script>
+    function Task(name, parent) {
+      let self = this;
+      self.name = name;
+      self.remove = function() {
+        parent.tasks.remove(self);
+      };
+    }
+
+    function ToDoViewModel() {
+      let self = this;
+      self.newTask = ko.observable("");
+      self.tasks = ko.observableArray([]);
+      self.addTask = function() {
+        let task = self.newTask().trim();
+        if (task) {
+          self.tasks.push(new Task(task, self));
+          self.newTask("");
+        }
+      };
+    }
+
+    ko.applyBindings(new ToDoViewModel());
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Heading</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+</head>
+<body>
+  <div>
+    <input type="text" placeholder="Type your Heading..." data-bind="value: message, valueUpdate: 'input'">
+    <h1 data-bind="text: message"></h1>
+  </div>
+
+  <script>
+    function ViewModel() {
+      this.message = ko.observable(""); 
+    }
+
+    ko.applyBindings(new ViewModel());
+  </script>
+</body>
+</html>
