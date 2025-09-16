@@ -1,0 +1,14 @@
+<div>
+    <h3>Assignment 3: Form</h3>
+    <oj-form-layout>
+    <oj-input-text
+      required="true"
+      raw-value="{{inputValue}}"
+      label-hint="Required Field">
+    </oj-input-text>
+    <oj-button disabled="[[!isInputValid()]]" data-bind="click: submitForm">
+  <span>Submit</span>
+</oj-button>
+  </oj-form-layout>
+  </div>
+
